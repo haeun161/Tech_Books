@@ -70,7 +70,7 @@
 -<b>이웃한 에지 연결하여 경계선 검출 한계</b>: 같은 물체를 구성하는 에지가 자잘하게 끊겨 나타나는 경우 문제 발생 
 ![image](https://github.com/user-attachments/assets/2b888afe-5473-473c-91be-3a819195378a)
 - <b>허프 변환 적용</b>하면 끊긴 에지 모아 선분 또는 원 등을 검출 가능
-![image](https://github.com/user-attachments/assets/b1d50a11-9d63-4596-83a5-562e6cde76c9)
+- ![image](https://github.com/user-attachments/assets/b1d50a11-9d63-4596-83a5-562e6cde76c9)
 
 ### 4.3.3 RANSAC
 
@@ -79,7 +79,20 @@
 - **Sementic Segmentation**: 의미 있는 단위로 분할하는 방식
 
 ### 4.4.1 배경이 단순한 영상의 영역 분할
+- **이진화 알고리즘**을 확장해 영역 분할에 사용 가능
+  - 예를 들어, 오츄 이진화를 여러 임곗값을 사용하도록 확장한 알고리즘으로 영상을 분할 가능
+- **군집화 알고리즘**을 영역 분할에 사용 가능
+  - (r,g,b) 3개 값으로 표현된 화소를 샘플로 보고 3차원 공간에서 클러스터링을 수행한 다음 화소 각각에 클러스터 번호 부여
+- **워터셰드(Watershed)** 확장해 영역 분할에 사용 가능
+  - Watershed: 비가 오면 오목한 곳에 웅덩이가 생기는 현상을 모방한 연산
+  - 낮은 곳부터 물을 채우는 연산을 반복하면 서로 다른 웅동이 찾을 수 o(에지 강도 맵, 맵을 지형으로 간주)
+  - ![image](https://github.com/user-attachments/assets/42fac92b-4d31-4e84-b802-b3ede9b3e4c6)
+
 ### 4.4.2 슈퍼 화소 분할(Super-pixel Segmantation)
+- 때로는 아주 작은 영역으로 분할하여 다른 알고리즘의 입력으로 사용하는 경우 존재
+- 작은 영역 화소보다 크지만 물체보다 작아  **슈퍼 화소(Super-pixel)** 라고 함
+- **SLIC(Simple Linear Iterative Clustering)** :슈퍼 화소 알고리즘 중 하나
+  - K-mean clustering 알고리즘과 비슷하게 작동하는데 처리 과정이 단순하고 성능 좋음음 
 ### 4.4.3 최적화 분할
 
 ## 4.5 대화식 분할
