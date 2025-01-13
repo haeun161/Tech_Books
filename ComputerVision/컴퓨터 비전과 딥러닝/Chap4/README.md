@@ -89,7 +89,8 @@
   - (r,g,b) 3개 값으로 표현된 화소를 샘플로 보고 3차원 공간에서 클러스터링을 수행한 다음 화소 각각에 클러스터 번호 부여
 - **워터셰드(Watershed)** 확장해 영역 분할에 사용 가능
   - Watershed: 비가 오면 오목한 곳에 웅덩이가 생기는 현상을 모방한 연산
-  - 낮은 곳부터 물을 채우는 연산을 반복하면 서로 다른 웅동이 찾을 수 o(에지 강도 맵, 맵을 지형으로 간주)
+  - 낮은 곳부터 물을 채우는 연산을 반복하면 서로 다른 웅동이 찾을 수 o
+    - (에지 강도 맵, 맵을 지형으로 간주)
   - ![image](https://github.com/user-attachments/assets/42fac92b-4d31-4e84-b802-b3ede9b3e4c6)
   - ![image](https://github.com/user-attachments/assets/69cfc6cf-ec93-4856-89c1-78c03e830bbc)
 
@@ -97,7 +98,8 @@
 - 때로는 아주 작은 영역으로 분할하여 다른 알고리즘의 입력으로 사용하는 경우 존재
 - 작은 영역 화소보다 크지만 물체보다 작아  **슈퍼 화소(Super-pixel)** 라고 함
 - **SLIC(Simple Linear Iterative Clustering)** :슈퍼 화소 알고리즘 중 하나
-  - K-mean clustering 알고리즘과 비슷하게 작동하는데 처리 과정이 단순하고 성능 좋음
+  - K-mean clustering 알고리즘과 비슷하게 작동
+  - 처리 과정이 단순하고 성능 좋음
      
 ### 4.4.3 최적화 분할
 
