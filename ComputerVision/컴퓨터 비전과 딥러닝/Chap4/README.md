@@ -45,9 +45,10 @@
 ## 4.2 캐니 에지
 - **1986, 캐니, 캐니 알고리즘**
   - 가장 체계적인 검출 이론이라고 인정받은 알고리즘 제안
-  - 최소 오류율과 위치 정확도, 한 두께라는 기준에 따라 목적 함수를 정의하고 에지 검출을 최적화 문제로 품
+  - 최소 오류율, 위치 정확도, 한 두께라는 기준에 따라 목적 함수를 정의하고 에지 검출을 최적화 문제로 품
   - Edge Dectection에서 가우시안에 1차 미분 적용한 연산자가 최적이라는 사실을 수학적으로 증명
-  - 한 두깨 에지를 출력하기 위해 Non-Maximum Suppression을 적용
+  - **한 두께 에지**: edge를 얇게 검출하는 것이 목표
+    - 한 두께 에지를 출력하기 위해 Non-Maximum Suppression을 적용
   - **Non-Maximum Suppression**: 에지 방향에 수직인 두 이웃 화소의 에지 강도가 자신보다 작으면 에지로 살아남고, 그렇지 않으면 에지 아닌 화소로 바뀐다 => 두 이웃 화소와 비교해 자신이 최대가 아니면 억제
     ![image](https://github.com/user-attachments/assets/8a8cc7bc-a005-4714-a982-3eb0146103c8)
   - False Positive을 줄이기 위해 2개의 이력 임계값 T_low, T_high 이용한 Edge Detection 추가 적용
@@ -68,11 +69,14 @@
 
 ### 4.3.2 허프 변환
 -<b>이웃한 에지 연결하여 경계선 검출 한계</b>: 같은 물체를 구성하는 에지가 자잘하게 끊겨 나타나는 경우 문제 발생 
-![image](https://github.com/user-attachments/assets/2b888afe-5473-473c-91be-3a819195378a)
+- ![image](https://github.com/user-attachments/assets/2b888afe-5473-473c-91be-3a819195378a)
 - <b>허프 변환 적용</b>하면 끊긴 에지 모아 선분 또는 원 등을 검출 가능
 - ![image](https://github.com/user-attachments/assets/b1d50a11-9d63-4596-83a5-562e6cde76c9)
 
-### 4.3.3 RANSAC
+### 4.3.3 RANSAC(Random Sample Consensus)
+- ![image](https://github.com/user-attachments/assets/eabe140f-ca4a-45fc-abdc-2c999c6e9e09)
+- ![image](https://github.com/user-attachments/assets/2852ba1d-094f-47a9-943e-7fc1981ec213)
+
 
 ## 4.4 영역 분할(Region Segmentation)
 - **Region Segmentation**: 물체가 점유한 영역을 구분하는 작업 [다루는 내용 v]
