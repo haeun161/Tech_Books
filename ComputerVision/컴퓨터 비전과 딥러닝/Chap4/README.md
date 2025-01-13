@@ -32,8 +32,17 @@
   - 3x3 크기로 확장하면 잡음을 흡수하여 더 좋은 성능 보임. 이는 가장 널리 쓰이는 에지 연산자
     ![image](https://github.com/user-attachments/assets/bcbba331-024d-4649-a688-a35a959be115)
     - 소벨 연산자는 보다 가까운 상하좌우 화소에 가중치 2를 줌
-    - **에지 강도**: 에지일 가능성, **에지 방향**: 에지의 진행 방향(그레디언트 방향을 90도 회전한 방향)
+    - **에지 강도**: 에지일 가능성
+    - **에지 방향**: 에지의 진행 방향(그레디언트 방향을 90도 회전한 방향)
       ![image](https://github.com/user-attachments/assets/baa0a697-9be0-4dd1-8f89-eaca29c17362)
+    - **소벨 연산자 적용 사례**
+    ![image](https://github.com/user-attachments/assets/e841e859-c139-4426-8579-b09c3bf1c5c9)
+    ![image](https://github.com/user-attachments/assets/ffa9423b-ba8b-40b1-9e0b-c38c670bbed8)
+      - x방향 연산자는 수직 방향의 에지가 선명
+      - Y방향 연산자는 수평 방향의 에지가 선명
+      - 명암 변화가 큰 곳에 더욱 선명한 에지가 나타남
+
+
 
 
 
