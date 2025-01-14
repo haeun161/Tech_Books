@@ -50,12 +50,15 @@
   - **한 두께 에지**: edge를 얇게 검출하는 것이 목표
     - 한 두께 에지를 출력하기 위해 Non-Maximum Suppression을 적용
   - **Non-Maximum Suppression**: 에지 방향에 수직인 두 이웃 화소의 에지 강도가 자신보다 작으면 에지로 살아남고, 그렇지 않으면 에지 아닌 화소로 바뀐다 => 두 이웃 화소와 비교해 자신이 최대가 아니면 억제
+    - non-maximim supression는 지역 최대가 아닌 점을 억제하고 local macimum만 남기는 전략 
     ![image](https://github.com/user-attachments/assets/8a8cc7bc-a005-4714-a982-3eb0146103c8)
   - False Positive을 줄이기 위해 2개의 이력 임계값 T_low, T_high 이용한 Edge Detection 추가 적용
     - 에지 강도가 T_high 이상인 에지 화소에서 시작(에지일 가능성 높은 곳에서 추적 시작)
     - 시작 화소가 정해지면, 이후 추적은 T_low 임계값을 넘는 에지를 대상으로 진행
     - => 추적 이력이 있는 이웃을 가진 화소는 에지 강도가 낮더라도 실제 에지로 인정하는 전략
     -  T_high를 T_low 보다 2~3배로 설정하는 것 권고
+- ![image](https://github.com/user-attachments/assets/4c391571-a77c-4e68-b80e-d087e1482b63)
+  - 임계값을 5로 설정하면, 노란색으로 칠한 점 2개만 최종 선택됨
 - Edge Dectection 연구는 캐니 이후에 뚜렷한 개선 x
 
 ## 4.3 직선 검출
@@ -72,6 +75,11 @@
 - ![image](https://github.com/user-attachments/assets/2b888afe-5473-473c-91be-3a819195378a)
 - <b>허프 변환 적용</b>하면 끊긴 에지 모아 선분 또는 원 등을 검출 가능
 - ![image](https://github.com/user-attachments/assets/b1d50a11-9d63-4596-83a5-562e6cde76c9)
+
+- 허프변환은 직선의 방적식은 알려주는데, 직선의 양끝 점은 알지x
+- 양 끝점을 알아내려면 non-maximum suppression 과정에서 극점을 형성한 화소를 찾아 가장 먼 곳에 있는 두 화소를 계산하는 추가적 과정 필요
+
+<활용>
 
 ### 4.3.3 RANSAC(Random Sample Consensus)
 - ![image](https://github.com/user-attachments/assets/eabe140f-ca4a-45fc-abdc-2c999c6e9e09)
