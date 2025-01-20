@@ -129,5 +129,52 @@
 ## 5.5 매칭
 - 매칭은 물체 인식, 물체 추적, 스테레오, 카메라 캘리브레이션 등 다양한 문제에서 핵심 역할을 수행
 
+### 5.5.1 매칭 전략
 - **문제의 의해**
   - 영상에서 추출한 기술자 집합 A={a1,a2,...a_n}와 B={b1,b2,..,b_m}가 주어졌을 때 같은 물체의 같은 곳에 해당하는 a_j와 b_i의 쌍을 모두 찾는 문제
+  - 잡음이 심할 경우, 물체 추적하기 어려움
+- 가장 쉽게 생각할 수 있는 알고리즘: A와 B를 조합한 mn개의 쌍 각각에 대해 거리를 계산하고, 거리가 임계값보다 작은 쌍을 모두 취하는 것 (주로 유클리디안 거리 사용)
+  - 한계점1: 물체의 같은 곳이 아닌데 매칭되는 쌍(FT), 같은데 매칭 실패하는 경우(FN)가 자주 발생
+  - 한계점2: m과 n이 커서 매칭에 많은 시간 소요
+    
+- **매칭 전략**
+  - 3가지 전략
+  - **(1)고정 임곗값 방법**: 두 기술자 a와 b 거리가 임계값보다 작으면 매칭되었다고 간주
+    - ![image](https://github.com/user-attachments/assets/d34bbfe0-0ee8-427f-a9bd-a146cf9f5662)
+    - 임계값 T를 정하는 일이 매우 중요
+    - T 너무 작으면, 진짜 매칭 쌍이 조건을 통과하지 못해 FN이 많이 발생
+    - T 너무 크면, FP이 많이 발생
+  - **(2)최근접 이웃nearest neighbor**: a는 B에서 거리가 가장 b를 찾고, a와 b가 식을 만족시키면 매칭 쌍으로 취한다
+    - ![image](https://github.com/user-attachments/assets/00b3639d-c313-417d-ba90-80466ece11e4)
+  - **(3) 최근접 이웃거리 비율**: a는 B에서 가장 가까운 b_j와 두번째로 가까운 b_k를 찾아 아래 식을 만족하면 매칭 쌍이 된다
+    -  ![image](https://github.com/user-attachments/assets/8ccda5ea-2703-496d-b4cd-0f0921d9c8b3)
+    -  많은 눈문이 최근접 이웃 거리 비율 전략이 가장 좋은 성능을 보인다는 실험 결과를 보고
+    -  SIFT도 이 전략 사용
+  - ![image](https://github.com/user-attachments/assets/d80fb28f-9de7-4902-a7a4-e8bf269d043f)
+
+### 5.5.2 매칭 성능 측정
+- **컴퓨티 비전 측정 참조문헌**
+  - 컴퓨터비전의 성능 측정을 폭넓게 이해하려면 [Christensen2002,Scharstein2021]
+  - [Scharstein2021] 컴퓨터 비전의 성능 측정에 대한 논문 여러 편을 실은 IJCV의 2021년 4월 특집호를 소개
+    - 영상 데이터셋, 성능 측정 기준, 벤치마킹 결과 등을 상세하게 다룸
+      
+- **정밀도와 재현율**
+
+- **ROC 곡선과 AUC**
+  - [기존 한계점] 고정 임계값이나 최근접 이웃 거리 비율 방법은 임계값 T에 따라
+    - T 작게 하면, 거짓긍정률(False Positive Rate)은 작아진다
+    - T 크게 하면, 거짓 긍정률이 커지는데, 참긍적률도 따라 커진다
+    - ![image](https://github.com/user-attachments/assets/bbba5723-24fc-4e82-bff4-4e3e444bd168)
+  - [**ROC: Reciever Operating Characteristic**] ![image](https://github.com/user-attachments/assets/6f435b47-9fb3-4ff3-8ae9-c28d431a9f25)
+    - C2 성능이 가장 뛰어나다
+  - [**AUC: Area Under Curve**]: 아래쪽 면접을 나타냄
+
+- **빠른 매칭**
+  - 속도 성능 지표
+  - 빠르게 탐색하는 알고리즘 ex) 이진 탐색 트리, 해싱, kd트리, 위치 의존 해싱, FLANN과 FAISS
+  - **k d트리**
+    - ![image](https://github.com/user-attachments/assets/d917af53-26bc-41cc-aaaa-ff9ef8655693)
+
+## 호모그래피 추정
+- outlier 걸러내는 과정 + 매칭 쌍을 이용해 물체 위치 찾는 과정 추가 필요
+- ![image](https://github.com/user-attachments/assets/84eba3d3-536f-4a43-93cb-320c1d997afa)
