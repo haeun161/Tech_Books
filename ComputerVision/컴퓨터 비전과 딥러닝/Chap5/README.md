@@ -40,7 +40,7 @@
 - **지역 특징으로 좋은 정도** 는 상하좌우에 있는 화소의 최소값을 특징 가능성 값 C로 취함
   - a는 C=2, B=0, C=0
 
-### 5.2.2 해리스 특징점
+### 해리스 특징점
 - 모라벡 알고리즘의 상하좌우 이웃만 보고 점수를 매기는 방식은 현실적이지 않다는 한계점 존재
 - 가중치 개념 추가
 - **가중치 제곱차의 합**
@@ -51,12 +51,41 @@
   - 이는 특정 화소 주의의 영상 구조를 표현하고 있어, A만 분석하면 지역특징 여부 판단 가능
   - 정수 뿐만 아니라 실수도 계산 가능
 - 해리스는 A의 고유값을 보고 지역 특징으로 좋은 정도를 측정하는 기법 제안
-  - ![image](https://github.com/user-attachments/assets/e79071d0-365f-4ea8-94c8-3fdfeeb058bd)
-  - 고유값이 모두 큰 경우 지역 특징으로 훌륭하다
+  - ![image](https://github.com/user-attachments/assets/11d35548-55e2-4d08-a164-3e9bab4dbfbe)
+    - 고유값이 모두 큰 경우 지역 특징으로 훌륭하다
   - ![image](https://github.com/user-attachments/assets/b4233836-7b00-4168-979d-1e3828f61075)
     - 하지만 위의 식은 고유값을 계산하는데 시간 상당하므로 피하는 방법이 좋음
   - ![image](https://github.com/user-attachments/assets/f4a0ddee-a02c-42a5-9219-d90b6252ed6a)
 
+### 해리스 특징점의 분석
+- 검출된 특징점들은 모퉁이뿐만 아니라 blob도 잘 검출한다
+- 해리스는 자신의 알고리즘이 찾은 특징은 모퉁이라 하지만, 추후 연구자들은 이를 feature point 또는 interest point라고 지칭
+- 해리스 특징점은 이동과 회전에 equivariant하며, 회전에 불변이다.
+- 스케일 변환에서 물체의 크기에 따라 마스크의 크기를 적절하게 조정해야 한다
 
+## 5.3 스케일 불변한 지역 특징
+- **스케일 공간scale space** 이론에서는 스케일을 모르는 상황에 대응하기 위해 3단계 전략을 사용
+- 대표적인 알고리즘: SIFT
+
+### 기본 알고리즘
+- ![image](https://github.com/user-attachments/assets/22d928eb-7de6-4182-954c-a22a6b8b7b55)
+  - **1행**: 다중 스케일 영상은 가까이부터 멀리까지 본 장면으로 표현
+    - **방법1**: 거리가 멀어지면 세부 내용이 점점 흐려지는 현상은 모방
+      - 표준편차를 키우면서 가우시안 필터로 입력 영상을 스무딩하여 흐려지는 현상을 시뮬
+      - ![image](https://github.com/user-attachments/assets/f4ba9ebc-8167-4bba-8f24-b00cb5271037)
+    - **방법2**: 거리가 멀어짐에 따라 물체의 크기가 작아지는 현상 모방
+      - 영상의 크기를 반씩 줄인 영상을 쌓은 피라미드 영상으로 현상을 시뮬
+      - ![image](https://github.com/user-attachments/assets/f75a0b8c-25ca-4241-a6b1-ad289b8f3aed)
+    - 방법1,2로 만들어진 다중 스케일링 영상
+      - ![image](https://github.com/user-attachments/assets/ae9497e1-f293-4e89-a043-24a15486c823)
+   
+  - **2행**: 스케일 공간의 미분은 Laplacian을 주로 사용
+    - ![image](https://github.com/user-attachments/assets/bcc568ec-be72-4b20-ad49-c68fbebb0888)
+    - Laplacian은 스케일 공간에서 극점 찾기 유리
+    - 표준편차가 클수록 d_yy, d_xx가 작아지는 문제로 주로 정규 라플라시안 사용
+      - ![image](https://github.com/user-attachments/assets/abba1aa1-652e-4570-b846-ecb03081c376)
+  - **3행**: 극점 검출 - 주로 비최대 억제 사용
+  
+## 5.4 SIFT
 
 
