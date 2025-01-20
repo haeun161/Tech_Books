@@ -175,6 +175,6 @@
   - **k d트리**
     - ![image](https://github.com/user-attachments/assets/d917af53-26bc-41cc-aaaa-ff9ef8655693)
 
-## 호모그래피 추정
+## 5.6 호모그래피 추정
 - outlier 걸러내는 과정 + 매칭 쌍을 이용해 물체 위치 찾는 과정 추가 필요
 - ![image](https://github.com/user-attachments/assets/84eba3d3-536f-4a43-93cb-320c1d997afa)
