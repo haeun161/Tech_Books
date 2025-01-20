@@ -31,4 +31,32 @@
 
 ## 5.2 이동과 회전 불변한 지역 특징
 
-### 모라벡 알고리즘
+### 5.2.1 모라벡 알고리즘
+- ![image](https://github.com/user-attachments/assets/5482ea9c-ce78-4694-b551-d32fbe8e1149)
+- 모라벡은 다음과 같은 특징점(a,b,c) 중 a는 여러 방향으로 색상 변화가 있어 찾기 쉽고, c는 어느 방향으로도 밝기 변화가 미세하여 찾기 어렵다고 설명
+- **찾기 쉬운 정도를 나타내는 수식**(제곱차의 합):
+- ![image](https://github.com/user-attachments/assets/1aa8d36f-ad4f-417d-bb5e-b28563f58594)
+- ![image](https://github.com/user-attachments/assets/155b1b18-1859-4405-9c1d-794a6fbbeefb)
+- **지역 특징으로 좋은 정도** 는 상하좌우에 있는 화소의 최소값을 특징 가능성 값 C로 취함
+  - a는 C=2, B=0, C=0
+
+### 5.2.2 해리스 특징점
+- 모라벡 알고리즘의 상하좌우 이웃만 보고 점수를 매기는 방식은 현실적이지 않다는 한계점 존재
+- 가중치 개념 추가
+- **가중치 제곱차의 합**
+  - ![image](https://github.com/user-attachments/assets/a7a1a16d-69d4-4b40-8cd7-0e7bd41b8b48)
+- 테일러 확장을 통해 해당 식을 확장하면: **2차 모멘트 행렬**
+  - ![image](https://github.com/user-attachments/assets/49b281ba-ea8c-488d-a030-9e35f715e181)
+  - ![image](https://github.com/user-attachments/assets/4edb16d3-e1ed-4cd4-8dd0-66cf9af3a89a)
+  - 이는 특정 화소 주의의 영상 구조를 표현하고 있어, A만 분석하면 지역특징 여부 판단 가능
+  - 정수 뿐만 아니라 실수도 계산 가능
+- 해리스는 A의 고유값을 보고 지역 특징으로 좋은 정도를 측정하는 기법 제안
+  - ![image](https://github.com/user-attachments/assets/e79071d0-365f-4ea8-94c8-3fdfeeb058bd)
+  - 고유값이 모두 큰 경우 지역 특징으로 훌륭하다
+  - ![image](https://github.com/user-attachments/assets/b4233836-7b00-4168-979d-1e3828f61075)
+    - 하지만 위의 식은 고유값을 계산하는데 시간 상당하므로 피하는 방법이 좋음
+  - ![image](https://github.com/user-attachments/assets/f4a0ddee-a02c-42a5-9219-d90b6252ed6a)
+
+
+
+
