@@ -18,3 +18,28 @@
 
     
 ## 7.2 기계학습 기초
+- y =f(x)
+- 기계학습의 4단계: 1.데이터 수집 2. 모델 선택 3. 학습 4. 예측
+- 데이터 수집
+  - 모델의 입력을 feature vector, 출력을 GroundTruth 또는 label이라고 지칭
+- 학습: 수집한 데이터로 방정식을 풀어 함수를 알아내는 일
+  - (최소 오류로 맞히는 최적의 가중치 값을 알아내는 작업)
+  - 학습 시, 가중치 w값이 얼마나 좋은지를 측정하기 위해 loss function 사용. ex) MSE
+- 예측: 학습된 모델로 특정 x에 대해 y를 계산하는 일
+  - 추론inference라고도 부름. 
+  - W를 가진 모델에 학습에 사용되지 않던 새로운 특징 벡터를 입락하고 출력을 구하는 과정.
+  - 이를 통해 모델의 성능 평가
+  - k-fold cross-validation을 통해 데이터셋 k개 부분 집합으로 분할하고 성능 실험을 K번하여 평균을 취하는 방식
+    - ![image](https://github.com/user-attachments/assets/36de7828-408c-4935-9a68-14a9b2bfe0f1)
+
+- 컴퓨터 비전 문제 종류:  Classification(분류), 검출, 분할, 추적
+  - ![image](https://github.com/user-attachments/assets/276cb354-6043-4c2e-8d98-b8c782835d02)
+    
+## 7.3 딥러닝 소프트웨어 맛보기
+- **sklearn**: 파이썬이 제공하는 기계학습 라이브러리
+  - 비신경망 모델, 얕은 신경망까지만 지원
+- 딥러닝을 구현하는데 가장 널리 쓰이는 도구는 **Tensorflow**, **Pytorch**
+- **Tensorflow**
+  - 2015년 Google에서 공개
+- **Pytorch**
+  - 2015년 Facebook에서 공개
