@@ -60,3 +60,26 @@
 
 ### 퍼셉트론
 - ![image](https://github.com/user-attachments/assets/27297346-9db0-48ce-87e2-e06468d2c427)
+  - 입력층 - d차원의 특징 벡터를 받기 위한 d개의 노드와 1개의 바이어스 노드(x0=1)
+  - 출력층
+  - 입력 노드와 출력 노드 연결하는 에지 = 가중치
+  - tao = 활성 함수(o=0은 decision boundary)
+  - 활성 함수 적용 전의 s 값 = logit로짓
+-  OR 문제 풀기 적합
+  - ![image](https://github.com/user-attachments/assets/33b3adbe-0a85-4757-905a-04bb0187c152)
+  - ![image](https://github.com/user-attachments/assets/2e939538-766c-4b2d-bd4f-cfb5425108e7)
+    - 모든 샘플을 담은 행렬 X를 설계 행렬(design matrix)라고 지
+  - **바이어스 노드 추가 해야하는 이유?** 바이어스 없으면 직선이 x2=-x1와 같으므로 항상 원점을 지나므로 데이터를 제대로 분류할 수 없다
+  - 퍼셉트론은 특징 공간을 두 부분 공간으로 나누는 분류기이다
+  - ![image](https://github.com/user-attachments/assets/343d162d-4e8c-4ca6-aecf-0f76b136c1ef)
+
+## 7.5 깊은 다층 퍼셉트론
+- 퍼셉트론은 단순한 OR 데이터셋 문제뿐만 아니라 수백 차원 샘플이 수만개인 분류 문제도 풀 수 있다
+- **한계점**: 선형분류기이기 때문에 선형 분리 가능(linearly separable) 데이터셋에서만 100% 정확률로 분류하고 선형 분리 불강능한 상황에서는 정확도 낮음
+  - ![image](https://github.com/user-attachments/assets/2b197b45-d2b2-4e90-b017-a8266c357116)
+  - XOR 문제조차 풀지 못함(최대 75%의 정확도)
+- **해결안**: 은닉층을 추가한 다층 퍼셉트론 등장(루멜하트가 제시)
+
+#### 다층 퍼셉트론
+- **발상: XOR 문제**
+  - ![image](https://github.com/user-attachments/assets/43b4a37d-bfa4-48fd-8228-1d442c46449d)
