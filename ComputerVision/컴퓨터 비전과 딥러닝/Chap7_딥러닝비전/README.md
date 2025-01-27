@@ -153,5 +153,4 @@
 
 ## 7.8 (비전 에이전트) 우편번호 인식기기
 - ![image](https://github.com/user-attachments/assets/67d4e8ab-baa3-4d3f-ae67-07060694c151)
-- e는 reset, s는 show, r는 recognition하는 함수수
-
+- e는 reset, s는 show, r는 recognition하는 함수
