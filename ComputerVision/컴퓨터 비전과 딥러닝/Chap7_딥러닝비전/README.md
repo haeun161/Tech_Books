@@ -69,7 +69,7 @@
 -  OR 문제 풀기 적합
   - ![image](https://github.com/user-attachments/assets/33b3adbe-0a85-4757-905a-04bb0187c152)
   - ![image](https://github.com/user-attachments/assets/2e939538-766c-4b2d-bd4f-cfb5425108e7)
-    - 모든 샘플을 담은 행렬 X를 설계 행렬(design matrix)라고 지
+    - 모든 샘플을 담은 행렬 X를 설계 행렬(design matrix)라고 지칭
   - **바이어스 노드 추가 해야하는 이유?** 바이어스 없으면 직선이 x2=-x1와 같으므로 항상 원점을 지나므로 데이터를 제대로 분류할 수 없다
   - 퍼셉트론은 특징 공간을 두 부분 공간으로 나누는 분류기이다
   - ![image](https://github.com/user-attachments/assets/343d162d-4e8c-4ca6-aecf-0f76b136c1ef)
@@ -131,12 +131,13 @@
 - ![image](https://github.com/user-attachments/assets/a5ed3d3c-f9c7-4667-bf6e-b76f4cdc6525)
 
 #### 경사하강법
-- 경사하강법GD: 미분값을 보고 손함수가 낮으지는 방향을 찾아 이동하는 일을 반복하여 최저점에 도달하는 알고리즘
+- **경사하강법GD**: 미분값을 보고 손함수가 낮으지는 방향을 찾아 이동하는 일을 반복하여 최저점에 도달하는 알고리즘
 - ![image](https://github.com/user-attachments/assets/4fefce30-230b-47bd-9606-99e0ab895b1c)
   - 최적해(여기서는 u=5)에 점점 가까워지도록 반복 수행
-- 스토캐스틱 경사하강법
+- **스토캐스틱 경사하강법**
   - 1.가중치가 여럿인 식으로 확장 2. 데이터셋 전체를 사용하지 않고 랜덤하게 선택된 하나의 샘플 또는 batch만을 사용
   - 알고리즘: ![image](https://github.com/user-attachments/assets/583eb312-e663-4dc5-bb56-8106ed3112f4)![image](https://github.com/user-attachments/assets/586f8c0f-b19b-4778-85d7-e91665ae6f76)
+- ![image](https://github.com/user-attachments/assets/668f8d8d-0e89-473a-8e66-c7e7d3116710)
 
 ## 7.7 다층 퍼셉트론 구현하기
 - 하이퍼파라미터 다루기: optimizer, learning_rate, beta_1, beta_@, epsilon, amgsfrad 등
@@ -152,5 +153,5 @@
 
 
 ## 7.8 (비전 에이전트) 우편번호 인식기기
-
-
+- ![image](https://github.com/user-attachments/assets/67d4e8ab-baa3-4d3f-ae67-07060694c151)
+- e는 reset, s는 show, r는 recognition하는 함수
