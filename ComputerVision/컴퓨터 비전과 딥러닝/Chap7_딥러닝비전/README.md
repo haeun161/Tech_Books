@@ -131,10 +131,10 @@
 - ![image](https://github.com/user-attachments/assets/a5ed3d3c-f9c7-4667-bf6e-b76f4cdc6525)
 
 #### 경사하강법
-- 경사하강법GD: 미분값을 보고 손함수가 낮으지는 방향을 찾아 이동하는 일을 반복하여 최저점에 도달하는 알고리즘
+- **경사하강법GD**: 미분값을 보고 손함수가 낮으지는 방향을 찾아 이동하는 일을 반복하여 최저점에 도달하는 알고리즘
 - ![image](https://github.com/user-attachments/assets/4fefce30-230b-47bd-9606-99e0ab895b1c)
   - 최적해(여기서는 u=5)에 점점 가까워지도록 반복 수행
-- 스토캐스틱 경사하강법
+- **스토캐스틱 경사하강법**
   - 1.가중치가 여럿인 식으로 확장 2. 데이터셋 전체를 사용하지 않고 랜덤하게 선택된 하나의 샘플 또는 batch만을 사용
   - 알고리즘: ![image](https://github.com/user-attachments/assets/583eb312-e663-4dc5-bb56-8106ed3112f4)![image](https://github.com/user-attachments/assets/586f8c0f-b19b-4778-85d7-e91665ae6f76)
 - ![image](https://github.com/user-attachments/assets/668f8d8d-0e89-473a-8e66-c7e7d3116710)
