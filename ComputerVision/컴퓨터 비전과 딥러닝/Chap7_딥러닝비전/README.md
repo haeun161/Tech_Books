@@ -137,6 +137,7 @@
 - 스토캐스틱 경사하강법
   - 1.가중치가 여럿인 식으로 확장 2. 데이터셋 전체를 사용하지 않고 랜덤하게 선택된 하나의 샘플 또는 batch만을 사용
   - 알고리즘: ![image](https://github.com/user-attachments/assets/583eb312-e663-4dc5-bb56-8106ed3112f4)![image](https://github.com/user-attachments/assets/586f8c0f-b19b-4778-85d7-e91665ae6f76)
+- ![image](https://github.com/user-attachments/assets/668f8d8d-0e89-473a-8e66-c7e7d3116710)
 
 ## 7.7 다층 퍼셉트론 구현하기
 - 하이퍼파라미터 다루기: optimizer, learning_rate, beta_1, beta_@, epsilon, amgsfrad 등
