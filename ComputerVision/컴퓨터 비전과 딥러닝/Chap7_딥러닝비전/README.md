@@ -139,6 +139,18 @@
   - 알고리즘: ![image](https://github.com/user-attachments/assets/583eb312-e663-4dc5-bb56-8106ed3112f4)![image](https://github.com/user-attachments/assets/586f8c0f-b19b-4778-85d7-e91665ae6f76)
 
 ## 7.7 다층 퍼셉트론 구현하기
+- 하이퍼파라미터 다루기: optimizer, learning_rate, beta_1, beta_@, epsilon, amgsfrad 등
+- Adam & SGD 학습 비교: SGD < Adam
+  - ![image](https://github.com/user-attachments/assets/a48cdb4b-31a9-42f6-980d-106c876bb34c)
+- 과잉적합 확인
+  - ![image](https://github.com/user-attachments/assets/da9d8c13-e478-48f9-8586-4b21d5d506f1)
+  - 과잉적합: 훈련 집합에 과다하게 학습되어 일반화 능력을 상실하는 현상
+
+-**Tensorflow 하이퍼파라미터 설정 체험**: Tensorflow PlayGround
+  - https://playground.tensorflow.org/#activation=tanh&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=4,2&seed=0.61598&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false
+  - ![image](https://github.com/user-attachments/assets/1a1bb468-b62e-4321-bb60-998d903778a4)
+
+
 ## 7.8 (비전 에이전트) 우편번호 인식기기
 
 
