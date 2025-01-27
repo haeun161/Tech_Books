@@ -56,6 +56,7 @@
   - 신경망 연구 크게 퇴조
   - 1986년: 루멜하트와 동료들이 퍼셉트론에 은닉층 추가한 다층 퍼셉트론과 퍼셉트론 학습할 수 있는 역전파 알고리즘 저술
   - 1990년대: SVM이라는 비신경망 모델 등장하며 다층 퍼셉트론 능가하는 형국
+    - - 1980년대에는 데이터셋이 작고, 컴퓨터가 느리고, 학습 알고리즘 미숙한 탓에 다층 퍼셉트론 학습이 제대로 되지 않음 => 은닉층 1,2개 쌓은 shallow neural network 사용
   - 2000년대: 은닉층 개수를 대폭 늘린 딥러닝 등장하며 다시 기계학습의 주류 기술이 됨
 
 ### 퍼셉트론
@@ -75,11 +76,69 @@
 
 ## 7.5 깊은 다층 퍼셉트론
 - 퍼셉트론은 단순한 OR 데이터셋 문제뿐만 아니라 수백 차원 샘플이 수만개인 분류 문제도 풀 수 있다
-- **한계점**: 선형분류기이기 때문에 선형 분리 가능(linearly separable) 데이터셋에서만 100% 정확률로 분류하고 선형 분리 불강능한 상황에서는 정확도 낮음
+- **한계점**: 선형분류기이기 때문에 선형 분리 가능(linearly separable) 데이터셋에서만 100% 정확률로 분류하고 선형 분리 불가능한 상황에서는 정확도 낮음
   - ![image](https://github.com/user-attachments/assets/2b197b45-d2b2-4e90-b017-a8266c357116)
   - XOR 문제조차 풀지 못함(최대 75%의 정확도)
 - **해결안**: 은닉층을 추가한 다층 퍼셉트론 등장(루멜하트가 제시)
 
-#### 다층 퍼셉트론
+#### 다층 퍼셉트론: MLP(Multi-Layer Perceptron)
 - **발상: XOR 문제**
-  - ![image](https://github.com/user-attachments/assets/43b4a37d-bfa4-48fd-8228-1d442c46449d)
+  - 퍼셉트론을 2개 사용하면 특징 공간을 3개 영역으로 분할 가능
+    - ![image](https://github.com/user-attachments/assets/43b4a37d-bfa4-48fd-8228-1d442c46449d)
+  - 병렬 병합하면 특징 공간 x=(x1,x2)를 새로운 특징 공간인 z=(Z1,z2)로 변환 가능
+    - ![image](https://github.com/user-attachments/assets/c62de5ab-acf5-4272-9d9e-84a8dfa67ca4)
+    - ![image](https://github.com/user-attachments/assets/639fdb74-d0de-449a-bd06-ad1228c25f89)
+    - ![image](https://github.com/user-attachments/assets/bd518c3f-b6ec-432b-b5ae-39bf3ddb2ad1)
+
+- **다층 퍼셉트론의 일반화된 구조**
+  - 입력층과 출력층 사이에 은닉층(hidden layer)가 추가됨
+  - 은닉층이 형성하는 새로운 특징 공간을 은닉 공간(hidden space) 또는 latent space라고 한다
+  - ![image](https://github.com/user-attachments/assets/c0da92df-b45e-4aec-b4c2-3ceb710bfb9e)
+  - 이웃한 두 층에 있는 노드의 모든 쌍에 에지가 있으면 FC:Fully-Connected 구조라고 한다
+  - 입력층과 은닉층을 연결하는 가중치를 U1, 은닉층과 출력층을 연결하는 가중치 행렬을 U2로 표현
+    - U1_ji : 은닝층 j번째 노드 & 입력층의 i번째 노드 연결하는 가중치
+    - U2_kj: 출력층 K번째 노드 & 은닉층 j번째 노드 연결하는 에지의 가중치
+    - ![image](https://github.com/user-attachments/assets/a48325d1-dbe5-4eac-bf54-33c09fbde1c0)
+  - 노드의 개수와 같이 사용자가 설정해줘야하는 매겨변수를 hyperparameter라고 함
+
+- **전방 계산(forward computation)**
+  - 특징 벡터 x가 입력층으로 들어와 은닉층, 출력층 거치면서 순차적으로 연산 수행하는 과정
+  - ![image](https://github.com/user-attachments/assets/209b3fbd-abfd-45e4-bf6f-802fcfee6b0e)
+  - ![image](https://github.com/user-attachments/assets/97eb788a-8a78-4ae9-92a6-36bea4aa63bb)
+  - ![image](https://github.com/user-attachments/assets/384332be-57ca-4c51-8f22-93125919539b)
+  - 정리:
+    - ![image](https://github.com/user-attachments/assets/87d293ca-414e-47cf-b04d-7f207eafe0d9)
+    - ![image](https://github.com/user-attachments/assets/fc6c22b9-6bab-45d2-803b-3a6cbb36c9f0)
+
+- **신경망 출력을 부류 정보로 해석**
+  - 전방계산을 통해 o를 구하고, 식을 이용하여 부류 정보를 알아내는 과정을 예측(prediction) 또는 추론(inference)라고 한다
+  - ![image](https://github.com/user-attachments/assets/1eeb43b8-4203-41af-ba1a-2b13af4efc62)
+  - 출력층은 보통 활성함수로 softmax를 사용한다
+    - softmax: 모든 요소 더하면 1이 되는 특성이 있어 확률로 해석할 수 있는 것이 장점
+
+- **활성 함수**
+  - ![image](https://github.com/user-attachments/assets/906c2a42-42d0-4abb-b001-bb828ef37f88)
+  - ![image](https://github.com/user-attachments/assets/93b62a97-2e24-4c2b-b00b-f5dd43579b05)
+    - Sigmoid 중, logistic은 범위가 [0,1]이고 hyperbolic tangent는 범위가 [-1,1]
+    - 딥러닝은 주로 ReLU(Rectified Linear Unit) 또는 ReLU 변종 사용
+      - ReLu는 양수 구간이면 미분값이 무조건 1이기 떄문에 그레디언트 소멸을 크게 누그러뜨림
+      - 그레디언트 소멸: 가중치 갱신하는 과정에서 미분값을 계속 곱하는데 활성함수의 미분값이 작은 경우, 급격하게 0에 가까워져서 가중치 갱신이 일어나지 않는 현상이 발생 => Vanishing Gradient
+    - 출력층으로는 주로 softmax 활성함수 사용
+      - 확률로 간주할 수 있어서 신경망의 최종 출력으로 적합
+     
+## 7.6 학습 알고리즘
+- ![image](https://github.com/user-attachments/assets/b6afcd24-7370-43cc-837e-52cf6a4a730d)
+- ![image](https://github.com/user-attachments/assets/a5ed3d3c-f9c7-4667-bf6e-b76f4cdc6525)
+
+#### 경사하강법
+- 경사하강법GD: 미분값을 보고 손함수가 낮으지는 방향을 찾아 이동하는 일을 반복하여 최저점에 도달하는 알고리즘
+- ![image](https://github.com/user-attachments/assets/4fefce30-230b-47bd-9606-99e0ab895b1c)
+  - 최적해(여기서는 u=5)에 점점 가까워지도록 반복 수행
+- 스토캐스틱 경사하강법
+  - 1.가중치가 여럿인 식으로 확장 2. 데이터셋 전체를 사용하지 않고 랜덤하게 선택된 하나의 샘플 또는 batch만을 사용
+  - 알고리즘: ![image](https://github.com/user-attachments/assets/583eb312-e663-4dc5-bb56-8106ed3112f4)![image](https://github.com/user-attachments/assets/586f8c0f-b19b-4778-85d7-e91665ae6f76)
+
+## 7.7 다층 퍼셉트론 구현하기
+## 7.8 (비전 에이전트) 우편번호 인식기기
+
+
