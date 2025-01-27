@@ -141,6 +141,7 @@
 ## 7.7 다층 퍼셉트론 구현하기
 - 하이퍼파라미터 다루기: optimizer, learning_rate, beta_1, beta_@, epsilon, amgsfrad 등
 - Adam & SGD 학습 비교: SGD < Adam
+  - ![image](https://github.com/user-attachments/assets/a48cdb4b-31a9-42f6-980d-106c876bb34c)
 - 과잉적합 확인
   - ![image](https://github.com/user-attachments/assets/da9d8c13-e478-48f9-8586-4b21d5d506f1)
   - 과잉적합: 훈련 집합에 과다하게 학습되어 일반화 능력을 상실하는 현상
