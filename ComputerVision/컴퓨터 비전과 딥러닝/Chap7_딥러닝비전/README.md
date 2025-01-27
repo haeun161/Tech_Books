@@ -69,7 +69,7 @@
 -  OR 문제 풀기 적합
   - ![image](https://github.com/user-attachments/assets/33b3adbe-0a85-4757-905a-04bb0187c152)
   - ![image](https://github.com/user-attachments/assets/2e939538-766c-4b2d-bd4f-cfb5425108e7)
-    - 모든 샘플을 담은 행렬 X를 설계 행렬(design matrix)라고 지
+    - 모든 샘플을 담은 행렬 X를 설계 행렬(design matrix)라고 지칭
   - **바이어스 노드 추가 해야하는 이유?** 바이어스 없으면 직선이 x2=-x1와 같으므로 항상 원점을 지나므로 데이터를 제대로 분류할 수 없다
   - 퍼셉트론은 특징 공간을 두 부분 공간으로 나누는 분류기이다
   - ![image](https://github.com/user-attachments/assets/343d162d-4e8c-4ca6-aecf-0f76b136c1ef)
