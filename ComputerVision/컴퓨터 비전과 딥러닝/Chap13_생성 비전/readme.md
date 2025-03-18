@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/6217965b-95d2-4284-b544-b1414a2687f1)# Chap13: 생성 비전
+![image](https://github.com/user-attachments/assets/69f65dd8-44ee-40e2-9acc-f80ca76c4c96)![image](https://github.com/user-attachments/assets/6217965b-95d2-4284-b544-b1414a2687f1)# Chap13: 생성 비전
 - 미약하게 GMM이나 HMM, 볼츠만 머신 등을 활용한 생성 모델이 연구되어 왔으나, GAN 이후 획기적인 진전이 이루어짐
 
 ## 13.1 생성 모델 기초
@@ -55,6 +55,8 @@
 - 오토인코더: 입력 영상을 그대로 출력으로 내놓는 컨볼루션 신경망
 - 인코드는 특징 맵을 점점 작게 하여 latent space으로 축소하고, 디코더는 latent space를 키워 원래 영상을 복원한다
 - latent space의 특징 맵은 영상을 복원할 수 있을 정도로 핵심 정보를 거의 다 가지고 있음
+- ![image](https://github.com/user-attachments/assets/8980cb0f-8087-4a06-95c2-13990f967845)
+- ![image](https://github.com/user-attachments/assets/c9c4021a-025e-46d2-af53-27eadd183f0d)
 
 - **MNIST를 오토인코도로 모델링하고 샘플 생성하기**
   - latent space의 한 점을 랜덤 발생시킨 다음, 디코드를 통과시켜 새로운 샘플 영상 생성
@@ -66,4 +68,45 @@
   - ![image](https://github.com/user-attachments/assets/2491a6db-2fdb-4102-a533-bf011930b65d)
   - ![image](https://github.com/user-attachments/assets/2df96570-88ac-43cb-a994-11436bf4dc92)
 
+### 변이 추론
+- Dalle나 Imagen같은 뛰어난 언어-비전 생성 모델은 **변이 오토인코더 또는 확산 모델**을 이용
+- 변이 오토인코더와 확산 모델은 복잡한 확률 분포를 추정하는데, 이 과정을 위해 variational inference 활용
+- VAE: latent space z를 도입
+  - latent space에서 정의된 확률 p(z)에 따라 z를 샘플링하고 조건부 확률 p(x|z)에 따라 x를 샘플링하여 데이터셋 얻었다고 가정
+  - variational inference = 역뱡향의 p(z|x)를 구하는 일
+  - ![image](https://github.com/user-attachments/assets/bc6a089f-d5c9-4e03-9a6d-fb9d498b277c)
+- variational inference
+  - 확률 분포의 집합 Q를 가정한 후, Q에 속하는 확률 분포 중에서 참 확률 p(z}x)에 가장 가까운 확률 분포 q를 최적화하는 방법 사용
+  - 확률 분포 a와 b가 얼마나 다른지 측정해주는 쿨백-라이블러 발산 사용
+  - ![image](https://github.com/user-attachments/assets/0cc79835-2172-4f64-b1bc-6cb202a84531)
+ 
+### 변이 오토인코더
+- 오토인코드를 생성 모델로 간주하지 않는 이유? : latent space z가 어떤든 상관 없이 손실 함수를 최소화하는데만, 즉 영상 복원에만 신경쓰면 latent space가 좋은 구조를 형성하지 못할 수 있다. 이 경우, 잘못된 점을 디코더에 입력하면 의미 없는 영상이 생성된다
+- VAE: latent space가 가우시안 확률 분포를 이루도록 규제하여 생성 모델로 발돋음.
+- ![image](https://github.com/user-attachments/assets/3752915c-1810-4197-836a-4efff3b9863c)
+- **MNIST를 VAE로 모델링하고 샘플 생성**
+  - ![image](https://github.com/user-attachments/assets/d4692733-3047-4096-9c51-80c59ba6bda6)
+  - ![image](https://github.com/user-attachments/assets/3f668b7f-229a-4fb4-8364-09d7e311f29b)
+- ![image](https://github.com/user-attachments/assets/409160df-1dbe-4518-ba45-dc1aa3a5fd1e)
+  - 
+
+### 이산변이 오토인코더: discrete VAE (dVAE)
+- ![image](https://github.com/user-attachments/assets/ac8b1ce6-6c9c-42eb-ab0a-146c888bd0bd)
+
+## 13.3 생성 적대 신경망
+- GAN
+- 코드: PG613~616
+- ![image](https://github.com/user-attachments/assets/ec61d99e-eebc-4916-aad3-e2a50f52dd5d)
+
+## 13.4 확산 모델
+
+## 13.5 생성 모델의 평가
+- 주요 요소
+  - 충실성: 주어진 데이터셋을 잘 모방하여 비슷하지만 같지 않은 샘플을 생성
+  - 다양성: 데이터셋을 이루는 모든  영상을 빼놓지 않고 골고루 반영한다
+- 자동 평가: IS: Inception Score, FID: Frechet Inception Distance, KID: Kernel Inception Distance 주로 사용
+
+## 13.6 멀티 모달 생성 모델: 언어와 비전의 결합
+- Dalle
+  - ![image](https://github.com/user-attachments/assets/a24288fc-82d5-48c2-bca5-4cf76fc6acb3)
 
