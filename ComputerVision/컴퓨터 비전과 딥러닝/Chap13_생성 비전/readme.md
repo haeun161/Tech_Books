@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/69f65dd8-44ee-40e2-9acc-f80ca76c4c96)![image](https://github.com/user-attachments/assets/6217965b-95d2-4284-b544-b1414a2687f1)# Chap13: 생성 비전
+# Chap13: 생성 비전
 - 미약하게 GMM이나 HMM, 볼츠만 머신 등을 활용한 생성 모델이 연구되어 왔으나, GAN 이후 획기적인 진전이 이루어짐
 
 ## 13.1 생성 모델 기초
